@@ -1,0 +1,11 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+- name: yaml_validator
+  image: devatherock/drone-yaml-validator:2.0.0
+  settings:
+    debug: false
+    continue_on_error: true
+    allow_duplicate_keys: false
