@@ -22,7 +22,7 @@ services:
     volume:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
-     DRONE_RUNNER_NAME: "docker-runner"
+      DRONE_RUNNER_NAME: "docker-runner"
       DRONE_RUNNER_CAPACITY: "5"
       DRONE_RPC_SECRET: "***REMOVED***"
       DRONE_SERVER_HOST: "drone.***REMOVED***"
