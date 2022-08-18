@@ -1,0 +1,30 @@
+---
+version: "3.9"
+services:
+  droneci:
+    image: docker.io/drone/drone:2
+    volumes:
+      - ***REMOVED***/ci/drone-config:/data
+    ports:
+      - 7090:90
+    environment:
+      DRONE_GITHUB_CLIENT_ID: "***REMOVED***"
+      DRONE_GITHUB_CLIENT_SECRET: "***REMOVED***"
+      DRONE_RPC_SECRET: "***REMOVED***"
+      DRONE_SERVER_HOST: "drone.***REMOVED***"
+      DRONE_SERVER_PROTO: "https"
+    restart: unless-stopped
+
+  droneci-runner:
+    image: docker.io/drone/drone-runner-docker:1
+    ports:
+      - 3009:3000
+    volume:
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+     DRONE_RUNNER_NAME: "docker-runner"
+      DRONE_RUNNER_CAPACITY: "5"
+      DRONE_RPC_SECRET: "***REMOVED***"
+      DRONE_SERVER_HOST: "drone.***REMOVED***"
+      DRONE_SERVER_PROTO: "https"
+    restart: unless-stopped
