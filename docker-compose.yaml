@@ -19,7 +19,7 @@ services:
     image: docker.io/drone/drone-runner-docker:1
     ports:
       - 3009:3000
-    volume:
+    volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       DRONE_RUNNER_NAME: "docker-runner"
