@@ -1,11 +1,8 @@
 kind: pipeline
-type: docker
+type: exec
 name: default
 
 steps:
-- name: yaml_validator
-  image: devatherock/drone-yaml-validator:2.0.0
-  settings:
-    debug: false
-    continue_on_error: true
-    allow_duplicate_keys: false
+- name: validate yaml
+  commands:
+  - "docker run --rm -it -v $(pwd):/work -w /work devatherock/drone-yaml-validator:2.0.0"
