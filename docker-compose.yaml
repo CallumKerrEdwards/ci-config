@@ -8,9 +8,9 @@ services:
     ports:
       - 7090:80
     environment:
-      DRONE_GITHUB_CLIENT_ID: "***REMOVED***"
-      DRONE_GITHUB_CLIENT_SECRET: "***REMOVED***"
-      DRONE_RPC_SECRET: "***REMOVED***"
+      DRONE_GITHUB_CLIENT_ID: $GITHUB_CLIENT_ID
+      DRONE_GITHUB_CLIENT_SECRET: $GITHUB_CLIENT_SECRET
+      DRONE_RPC_SECRET: $DRONE_RPC_SECRET
       DRONE_SERVER_HOST: "drone.***REMOVED***"
       DRONE_SERVER_PROTO: "https"
     restart: unless-stopped
@@ -24,7 +24,7 @@ services:
     environment:
       DRONE_RUNNER_NAME: "docker-runner"
       DRONE_RUNNER_CAPACITY: "5"
-      DRONE_RPC_SECRET: "***REMOVED***"
-      DRONE_SERVER_HOST: "drone.***REMOVED***"
-      DRONE_SERVER_PROTO: "https"
+      DRONE_RPC_SECRET: $DRONE_RPC_SECRET
+      DRONE_RPC_HOST: "drone.***REMOVED***"
+      DRONE_RPC_PROTO: "https"
     restart: unless-stopped
