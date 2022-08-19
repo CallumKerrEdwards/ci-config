@@ -2,14 +2,6 @@ kind: pipeline
 type: exec
 name: default
 
-environment:
-  GITHUB_CLIENT_ID:
-    from_secret: github-client-id
-  GITHUB_CLIENT_SECRET:
-    from_secret: github-client-password
-  DRONE_RPC_SECRET:
-    from_secret: drone-rpc-secret
-
 steps:
 - name: validate yaml
   commands:
@@ -17,7 +9,21 @@ steps:
 - name: pull latest container
   commands: 
   - docker-compose -p drone-ci pull
+  environment:
+    GITHUB_CLIENT_ID:
+      from_secret: github-client-id
+    GITHUB_CLIENT_SECRET:
+      from_secret: github-client-password
+    DRONE_RPC_SECRET:
+      from_secret: drone-rpc-secret
 - name: restart stack
   commands:
   - docker-compose -p drone-ci down
   - docker-compose -p drone-ci up -d
+  environment:
+    GITHUB_CLIENT_ID:
+      from_secret: github-client-id
+    GITHUB_CLIENT_SECRET:
+      from_secret: github-client-password
+    DRONE_RPC_SECRET:
+      from_secret: drone-rpc-secret
