@@ -20,9 +20,8 @@ steps:
       from_secret: docker-config-root
     WEB_ROOT_DOMAIN:
       from_secret: web-root-domain
-- name: restart stack
+- name: run docker-compose up
   commands:
-  - docker-compose -p drone-ci down
   - docker-compose -p drone-ci up -d
   environment:
     GITHUB_CLIENT_ID:
