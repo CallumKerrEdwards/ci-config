@@ -16,6 +16,10 @@ steps:
       from_secret: github-client-password
     DRONE_RPC_SECRET:
       from_secret: drone-rpc-secret
+    DOCKER_CONFIG_ROOT:
+      from_secret: docker-config-root
+    WEB_ROOT_DOMAIN:
+      from_secret: web-root-domain
 - name: restart stack
   commands:
   - docker-compose -p drone-ci down
