@@ -26,3 +26,7 @@ Then Drone will be running at `drone.$WEB_ROOT_DOMAIN`.
 
 Once Drone is up and running, this repository can be activated. Then subsequent commits will redeploy the stack, 
 once all the secrets defined in `.drone.yaml` have been set in Drone.
+
+## Runners
+
+This `docker-compose.yaml` starts a Docker Runner, but additionally an [Exec Runner](https://docs.drone.io/runner/exec/overview/) needs to be installed.

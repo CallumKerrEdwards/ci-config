@@ -6,22 +6,9 @@ steps:
 - name: validate yaml
   commands:
   - "docker run --rm -v $(pwd):/work -w /work devatherock/drone-yaml-validator:2.0.0"
-- name: pull latest container
-  commands: 
-  - docker-compose -p drone-ci pull
-  environment:
-    GITHUB_CLIENT_ID:
-      from_secret: github-client-id
-    GITHUB_CLIENT_SECRET:
-      from_secret: github-client-password
-    DRONE_RPC_SECRET:
-      from_secret: drone-rpc-secret
-    DOCKER_CONFIG_ROOT:
-      from_secret: docker-config-root
-    WEB_ROOT_DOMAIN:
-      from_secret: web-root-domain
 - name: run docker-compose up
   commands:
+  - docker-compose -p drone-ci pull
   - docker-compose -p drone-ci up -d
   environment:
     GITHUB_CLIENT_ID:
