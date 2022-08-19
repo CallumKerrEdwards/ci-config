@@ -5,4 +5,4 @@ name: default
 steps:
 - name: validate yaml
   commands:
-  - "docker run --rm -it -v $(pwd):/work -w /work devatherock/drone-yaml-validator:2.0.0"
+  - "docker run --rm -v $(pwd):/work -w /work devatherock/drone-yaml-validator:2.0.0"
