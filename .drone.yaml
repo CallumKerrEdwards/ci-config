@@ -6,3 +6,10 @@ steps:
 - name: validate yaml
   commands:
   - "docker run --rm -v $(pwd):/work -w /work devatherock/drone-yaml-validator:2.0.0"
+- name: pull latest container
+  commands: 
+  - docker-compose -p drone-ci pull
+- name: restart stack
+  commands:
+  - docker-compose -p drone-ci down
+  - docker-compose -p drone-ci up -d
